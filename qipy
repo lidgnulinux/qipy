@@ -1,0 +1,93 @@
+#!/usr/bin/python3
+
+import glob, os
+import argparse
+import shutil
+import subprocess
+import re
+# from urllib.request import urlretrieve 
+# import requests
+
+parser=argparse.ArgumentParser(description="simple qi wrapper.")
+parser.add_argument("opt1")
+parser.add_argument("opt2")
+args=parser.parse_args()
+
+def packages(keyword):
+  os.chdir("/var/lib/qi")
+  for file in sorted(glob.glob("*_*." + keyword)):
+      package = file.rstrip('\n').split('_')[:2]
+      print(*package, sep=" ")
+
+# to get the "installed_packages.list" file, generate the list using this command :
+# find /var/lib/qi/ -name "*_*.recipe" -printf '%f\n' | sort | sed 's/.recipe$//' > /var/qi/installed_packages.list 
+
+def search(keyword):
+  with open("/var/qi/installed_packages.list", 'r') as f:
+    for line in f.readlines():
+      if keyword in line:
+          package=line.split('_')[:2]
+          print(*package, sep=" ")
+
+def info(keyword):
+  package = glob.glob("/var/lib/qi/"+keyword+"_"+"*.txt")
+  pkg = '/'.join(package)
+  with open(pkg, 'r') as f:
+    for line in f.readlines():
+      if not re.match("QI", line):
+        print(line, end="")
+
+def get_source(keyword):
+  package = glob.glob("/var/lib/qi/"+keyword+"_"+"*.txt")
+  pkg = '/'.join(package)
+  with open(pkg, 'r') as f:
+    for line in f.readlines():
+      if 'fetch' in line:
+        print("Download the" + " " + keyword + " " + "source code")
+        url=line.split('"')[1]
+        file=url.split('/')[-1]
+        subprocess.call(["wget", "-c", url])
+
+def pkg_contents(keyword):
+  package = glob.glob("/usr/pkg/"+keyword+"_*")
+  pkg = '/'.join(package)
+  for root, dirs, files in os.walk(pkg):
+    for file in files:
+      list_contents=os.path.join(root, file).split("/usr/pkg/")[1]
+      package_name_vers=pkg.split("/usr/pkg/")[1]
+      print(package_name_vers, ":", "/"+list_contents.split(package_name_vers + "/")[1])
+
+# To get "content_pkgs.index" file, generate the index using command : find /usr/pkg > /var/qi/content_pkgs.index
+def pkg_file(keyword):
+  with open("/var/qi/content_pkgs.index", 'r') as f:
+    for line in f.readlines():
+      if keyword in line:
+          lines=line.rstrip('\n')
+          print(*lines, sep="")
+  
+def get_template(keyword):
+  if keyword=="meson":
+    shutil.copy("/var/qi/meson_build.recipe", "recipe")
+  elif keyword=="make":
+    shutil.copy("/var/qi/make_build.recipe", "recipe")
+  elif keyword=="cmake":
+    shutil.copy("/var/qi/cmake_build.recipe", "recipe")
+  else:
+      print ("specify template you want !") 
+
+if args.opt1=="list":
+   packages(args.opt2)
+elif args.opt1=="search":
+   search(args.opt2)
+elif args.opt1=="info":
+   info(args.opt2)
+elif args.opt1=="source":
+   get_source(args.opt2)
+elif args.opt1=="template":
+   get_template(args.opt2)
+elif args.opt1=="content":
+   pkg_contents(args.opt2)
+elif args.opt1=="file":
+   pkg_file(args.opt2)
+else:
+    print ("Use \"list recipe\", \"info <package name>\" or \"search <pattern>\" as option !")
