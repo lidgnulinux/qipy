@@ -4,7 +4,6 @@ import glob, os
 import argparse
 import shutil
 import subprocess
-import re
 # from urllib.request import urlretrieve 
 # import requests
 
