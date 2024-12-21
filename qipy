@@ -4,6 +4,7 @@ import glob, os
 import argparse
 import shutil
 import subprocess
+import re
 # from urllib.request import urlretrieve 
 # import requests
 
@@ -74,19 +75,19 @@ def get_template(keyword):
   else:
       print ("specify template you want !") 
 
-if args.opt1=="list":
+if args.opt1 in ("list", "l"):
    packages(args.opt2)
-elif args.opt1=="search":
+elif args.opt1 in ("search", "s"):
    search(args.opt2)
-elif args.opt1=="info":
+elif args.opt1 in ("info", "i"):
    info(args.opt2)
-elif args.opt1=="source":
+elif args.opt1 in ("source", "sc"):
    get_source(args.opt2)
-elif args.opt1=="template":
+elif args.opt1 in ("template", "t"):
    get_template(args.opt2)
-elif args.opt1=="content":
+elif args.opt1 in ("content", "c"):
    pkg_contents(args.opt2)
-elif args.opt1=="file":
+elif args.opt1 in ("file", "f"):
    pkg_file(args.opt2)
 else:
     print ("Use \"list recipe\", \"info <package name>\" or \"search <pattern>\" as option !")
