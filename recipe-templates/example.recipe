@@ -23,17 +23,5 @@ build()
 	# Set sane permissions
 	chmod -R u+w,go-w,a+rX-s .
 
-	rm -rf BUILD
-	mkdir BUILD
-	cd BUILD
-	
-	CPPFLAGS="$QICPPFLAGS" CFLAGS="$QICFLAGS" LDFLAGS="$QILDFLAGS" \
-	meson setup $configure_args \
-		-Dorc-test=disabled \
-		..
-	
-	ninja -j2
-	DESTDIR="$destdir" ninja -j2 install
-	
-	cd ..
+	# Do build stuffs below
 }

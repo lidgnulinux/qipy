@@ -1,4 +1,4 @@
-# Build recipe for $PKG.
+# Build recipe for .
 #
 
 # Exit immediately on any error
@@ -29,7 +29,11 @@ build()
 	
 	CPPFLAGS="$QICPPFLAGS" CFLAGS="$QICFLAGS" LDFLAGS="$QILDFLAGS" \
 	meson setup $configure_args \
-		-Dorc-test=disabled \
+		-D \
+		-D \
+		-D \
+		-D \
+		-D \
 		..
 	
 	ninja -j2

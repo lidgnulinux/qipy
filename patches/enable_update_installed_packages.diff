@@ -1,0 +1,38 @@
+--- /usr/bin/qi	2024-11-05 06:12:27.425258100 +0700
++++ /usr/bin/qi2	2024-11-21 08:49:18.012703647 +0700
+@@ -796,6 +796,11 @@
+     fi
+ 
+     warn "{<} Package \"${expunge##*/}\" removed from $rootdir${expunge%%/*}." ""
++
++    # update installed package list.
++    echo "Updating installed package list at /var/qi/installed_packages.list"
++    find /var/lib/qi/ -name "*.recipe" -printf '%f\n' | sed 's/.recipe$//' > /var/qi/installed_packages.list
++
+     unset -v expunge
+ }
+ 
+@@ -919,6 +924,11 @@
+     fi
+ 
+     warn "{>} Package \"${name}\" installed on $rootdir${_packagedir}." ""
++
++    # update installed package list.
++    echo "Updating installed package list at /var/qi/installed_packages.list"
++    find /var/lib/qi/ -name "*.recipe" -printf '%f\n' | sed 's/.recipe$//' > /var/qi/installed_packages.list
++
+     unset -v name _packagedir;	# Remove used variables.
+ }
+ 
+@@ -1025,6 +1035,11 @@
+     unset -v PRVLOC
+ 
+     warn "{^} Package \"${incoming}\" upgraded for $rootdir${packagedir}." ""
++
++    # update installed package list.
++    echo "Updating installed package list at /var/qi/installed_packages.list"
++    find /var/lib/qi/ -name "*.recipe" -printf '%f\n' | sed 's/.recipe$//' > /var/qi/installed_packages.list
++
+     unset -v incoming
+ 
+     # Reset given signals
