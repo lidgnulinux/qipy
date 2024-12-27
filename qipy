@@ -75,6 +75,11 @@ def get_template(keyword):
   else:
       print ("specify template you want !") 
 
+def get_recipe(keyword):
+  rcp = glob.glob("/usr/pkg/"+keyword+"_"+"*"+"/var/lib/qi/"+"*.recipe")
+  rcp2 = '/'.join(rcp)
+  shutil.copy(rcp2, "recipe")
+
 if args.opt1 in ("list", "l"):
    packages(args.opt2)
 elif args.opt1 in ("search", "s"):
@@ -89,5 +94,7 @@ elif args.opt1 in ("content", "c"):
    pkg_contents(args.opt2)
 elif args.opt1 in ("file", "f"):
    pkg_file(args.opt2)
+elif args.opt1 in ("recipe", "r"):
+   get_recipe(args.opt2)
 else:
     print ("Use \"list recipe\", \"info <package name>\" or \"search <pattern>\" as option !")
