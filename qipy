@@ -78,7 +78,11 @@ def get_template(keyword):
 def get_recipe(keyword):
   rcp = glob.glob("/usr/pkg/"+keyword+"_"+"*"+"/var/lib/qi/"+"*.recipe")
   rcp2 = '/'.join(rcp)
-  shutil.copy(rcp2, "recipe")
+  file = 'recipe'
+  if os.path.isfile(file):
+    print("There is a recipe file, not copying to prevent overwriting. Please rename or remove the recipe file first !")
+  else:
+    shutil.copy(rcp2, "recipe")
 
 if args.opt1 in ("list", "l"):
    packages(args.opt2)
