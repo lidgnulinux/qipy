@@ -37,6 +37,12 @@ def info(keyword):
       if not re.match("QI", line):
         print(line, end="")
 
+def recipe(keyword):
+  recipe = glob.glob("/var/lib/qi/"+keyword+"_"+"*.recipe")
+  rcp = '/'.join(recipe)
+  with open(rcp, 'r') as f:
+    subprocess.run(['less'], stdin=f)
+
 def get_source(keyword):
   package = glob.glob("/var/lib/qi/"+keyword+"_"+"*.txt")
   pkg = '/'.join(package)
@@ -84,6 +90,12 @@ def get_recipe(keyword):
   else:
     shutil.copy(rcp2, "recipe")
 
+def count_recipe(keyword):
+  with open("/var/qi/installed_packages.list", 'r') as f: 
+    contents = f.read()
+    line_count = contents.count('\n')
+    print("Total package(s): ", line_count, "package(s).")
+
 if args.opt1 in ("list", "l"):
    packages(args.opt2)
 elif args.opt1 in ("search", "s"):
@@ -100,5 +112,9 @@ elif args.opt1 in ("file", "f"):
    pkg_file(args.opt2)
 elif args.opt1 in ("recipe", "r"):
    get_recipe(args.opt2)
+elif args.opt1 in ("count", "cn"):
+   count_recipe(args.opt2)
+elif args.opt1 in ("view", "v"):
+   recipe(args.opt2)
 else:
     print ("Use \"list recipe\", \"info <package name>\" or \"search <pattern>\" as option !")
