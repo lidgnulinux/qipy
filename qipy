@@ -73,11 +73,11 @@ def pkg_file(keyword):
   
 def get_template(keyword):
   if keyword=="meson":
-    shutil.copy("/var/qi/meson_build.recipe", "recipe")
+    shutil.copy("/etc/qipy/recipe-templates/meson_build.recipe", "recipe")
   elif keyword=="make":
-    shutil.copy("/var/qi/make_build.recipe", "recipe")
+    shutil.copy("/etc/qipy/recipe-templates/make_build.recipe", "recipe")
   elif keyword=="cmake":
-    shutil.copy("/var/qi/cmake_build.recipe", "recipe")
+    shutil.copy("/etc/qipy/recipe-templates/cmake_build.recipe", "recipe")
   else:
       print ("specify template you want !") 
 
