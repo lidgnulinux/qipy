@@ -1,5 +1,13 @@
 # Changelog
 
+## master
+
+New changelog.
+
+- Add recipe(s) counter and view recipe function. 
+- change templates directory to /etc/qipy/recipe-templates.
+- make sure existing recipe isn't overwritten when copying recipe template. 
+
 ## v0.1
 
 This version is the first release. Still have simple functions and features, like :
