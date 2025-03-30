@@ -72,14 +72,15 @@ def pkg_file(keyword):
           print(*lines, sep="")
   
 def get_template(keyword):
-  if keyword=="meson":
+  file = 'recipe'
+  if keyword=="meson" and not os.path.isfile(file):
     shutil.copy("/etc/qipy/recipe-templates/meson_build.recipe", "recipe")
-  elif keyword=="make":
+  elif keyword=="make" and not os.path.isfile(file):
     shutil.copy("/etc/qipy/recipe-templates/make_build.recipe", "recipe")
-  elif keyword=="cmake":
+  elif keyword=="cmake" and not os.path.isfile(file):
     shutil.copy("/etc/qipy/recipe-templates/cmake_build.recipe", "recipe")
   else:
-      print ("specify template you want !") 
+      print ("specify template you want / make sure there's no existing recipe !") 
 
 def get_recipe(keyword):
   rcp = glob.glob("/usr/pkg/"+keyword+"_"+"*"+"/var/lib/qi/"+"*.recipe")
