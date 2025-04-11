@@ -4,9 +4,12 @@
 
 New changelog.
 
+## v0.2
+
 - Add recipe(s) counter and view recipe function. 
 - change templates directory to /etc/qipy/recipe-templates.
 - make sure existing recipe isn't overwritten when copying recipe template. 
+- Add function to search local package(s).
 
 ## v0.1
 

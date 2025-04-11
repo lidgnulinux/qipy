@@ -15,6 +15,9 @@ Qipy has some simple features, like :
 - Check which package(s) contain particular file, it's like `apt-file find` and `pacman -F`.
 - Check contents of package, it's like `apt-file list` and `pacman -Fl`.
 - Download source code of package, it's still slow and will be improved later.
+- Copy local / installed recipe.
+- Count & view recipe.
+- Search local package(s).
 
 ## Usage.
 
@@ -70,3 +73,25 @@ It's easy to use qipy. We just need to run these commands :
 	$ qipy sc <name of package>
 	```
 
+- Copy local / installed recipe.
+
+	```
+	$ qipy recipe <name of package>
+	$ qipy r <name of package>
+	```
+
+- Count & view recipe.
+
+	```
+	$ qipy count recipe 
+	$ qipy cn  recipe
+	$ qipy view <name of package>
+	$ qipy v <name of package>
+	```
+
+- Search local package(s).
+
+	```
+	$ qipy local <name of package>
+	$ qipy lc <name of package>
+	```
