@@ -97,6 +97,14 @@ def count_recipe(keyword):
     line_count = contents.count('\n')
     print("Total package(s): ", line_count, "package(s).")
 
+def local_packages(keyword):
+  arch=sorted(glob.glob("/var/cache/qi/packages/amd64/"+"*"+keyword+"*_*.tlz"))
+  noarch=sorted(glob.glob("/var/cache/qi/packages/noarch/"+"*"+keyword+"*_*.tlz"))
+  for file in (arch,noarch):
+      for files in file:
+          package = files.rstrip('\n')
+          print(*package, sep="")
+
 if args.opt1 in ("list", "l"):
    packages(args.opt2)
 elif args.opt1 in ("search", "s"):
@@ -117,5 +125,7 @@ elif args.opt1 in ("count", "cn"):
    count_recipe(args.opt2)
 elif args.opt1 in ("view", "v"):
    recipe(args.opt2)
+elif args.opt1 in ("local", "lc"):
+   local_packages(args.opt2)
 else:
     print ("Use \"list recipe\", \"info <package name>\" or \"search <pattern>\" as option !")
