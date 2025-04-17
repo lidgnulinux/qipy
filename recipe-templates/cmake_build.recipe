@@ -1,6 +1,5 @@
 # Build recipe for .
 #
-
 # Exit immediately on any error
 set -e
 
@@ -30,7 +29,7 @@ build()
 		-DCMAKE_BUILD_TYPE=MinSizeRel \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_TESTING=OFF
-	cmake --build build-shared
+	cmake --build build
 
 	DESTDIR="$destdir" cmake --install build
 }
