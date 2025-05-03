@@ -27,8 +27,8 @@ It's easy to use qipy. We just need to run these commands :
 - List all installed recipes.
 
 	```
-	$ qipy list recipe
-	$ qipy l recipe
+	$ qipy list
+	$ qipy l
 	```
 
 - Search package.
@@ -83,8 +83,8 @@ It's easy to use qipy. We just need to run these commands :
 - Count & view recipe.
 
 	```
-	$ qipy count recipe 
-	$ qipy cn  recipe
+	$ qipy count 
+	$ qipy cn
 	$ qipy view <name of package>
 	$ qipy v <name of package>
 	```

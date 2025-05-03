@@ -10,12 +10,12 @@ import re
 
 parser=argparse.ArgumentParser(description="simple qi wrapper.")
 parser.add_argument("opt1")
-parser.add_argument("opt2")
+parser.add_argument("opt2", nargs='?')
 args=parser.parse_args()
 
-def packages(keyword):
+def packages():
   os.chdir("/var/lib/qi")
-  for file in sorted(glob.glob("*_*." + keyword)):
+  for file in sorted(glob.glob("*_*." + "recipe")):
       package = file.rstrip('\n').split('_')[:2]
       print(*package, sep=" ")
 
@@ -91,7 +91,7 @@ def get_recipe(keyword):
   else:
     shutil.copy(rcp2, "recipe")
 
-def count_recipe(keyword):
+def count_recipe():
   with open("/var/qi/installed_packages.list", 'r') as f: 
     contents = f.read()
     line_count = contents.count('\n')
@@ -106,7 +106,7 @@ def local_packages(keyword):
           print(*package, sep="")
 
 if args.opt1 in ("list", "l"):
-   packages(args.opt2)
+   packages()
 elif args.opt1 in ("search", "s"):
    search(args.opt2)
 elif args.opt1 in ("info", "i"):
@@ -122,7 +122,7 @@ elif args.opt1 in ("file", "f"):
 elif args.opt1 in ("recipe", "r"):
    get_recipe(args.opt2)
 elif args.opt1 in ("count", "cn"):
-   count_recipe(args.opt2)
+   count_recipe()
 elif args.opt1 in ("view", "v"):
    recipe(args.opt2)
 elif args.opt1 in ("local", "lc"):

@@ -3,6 +3,7 @@
 ## master
 
 New changelog.
+- Make second argument as optional.
 
 ## v0.2
 
