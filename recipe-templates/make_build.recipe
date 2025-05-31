@@ -5,7 +5,7 @@ set -e
 
 program=
 version=
-release=
+release=0
 description=""
 homepage=""
 license=""
