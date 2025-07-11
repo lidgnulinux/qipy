@@ -32,10 +32,18 @@ def search(keyword):
 def info(keyword):
   package = glob.glob("/var/lib/qi/"+keyword+"_"+"*.txt")
   pkg = '/'.join(package)
-  with open(pkg, 'r') as f:
-    for line in f.readlines():
-      if not re.match("QI", line):
-        print(line, end="")
+  if os.path.isfile(pkg):
+    with open(pkg, 'r') as f:
+      for line in f.readlines():
+        if not re.match("QI", line):
+          print(line, end="")
+  else:
+      package = glob.glob("/var/lib/qi/"+keyword+"@"+"*.txt") 
+      pkg = '/'.join(package)
+      with open(pkg, 'r') as f:
+        for line in f.readlines():
+          if not re.match("QI", line):
+            print(line, end="")
 
 def recipe(keyword):
   recipe = glob.glob("/var/lib/qi/"+keyword+"_"+"*.recipe")
