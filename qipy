@@ -23,11 +23,14 @@ def packages():
 # find /var/lib/qi/ -name "*_*.recipe" -printf '%f\n' | sort | sed 's/.recipe$//' > /var/qi/installed_packages.list 
 
 def search(keyword):
-  with open("/var/qi/installed_packages.list", 'r') as f:
-    for line in f.readlines():
-      if keyword in line:
-          package=line.split('_')[:2]
-          print(*package, sep=" ")
+#  with open("/var/qi/installed_packages.list", 'r') as f:
+#    for line in f.readlines():
+#      if keyword in line:
+#          package=line.split('_')[:2]
+#          print(*package, sep=" ")
+  for file in sorted(glob.glob("/var/lib/qi/"+"*"+keyword+"*.recipe")):
+      package = file.rstrip('\n').split("/var/lib/qi/")[1].split('_')[:2]
+      print(*package, sep=" ")
 
 def info(keyword):
   package = glob.glob("/var/lib/qi/"+keyword+"_"+"*.txt")
