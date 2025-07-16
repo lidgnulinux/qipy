@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
-#include <getopt.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+#define MAX_LINE 1024
 
 void
 die(const char *fmt, ...) {
@@ -46,24 +48,57 @@ static int list_packages()
     return 0;
 }
 
+void search_packages(const char *pattern)
+{
+    FILE *file = fopen("/var/qi/installed_packages.list", "r");
+    if (!file) {
+        perror("Failed to open file");
+        return;
+    }
+
+    char line[MAX_LINE];
+
+    while (fgets(line, sizeof(line), file)) {
+        char package[64], version[64];
+        if (sscanf(line, "%63[^_]_%63[^_]", package, version) == 2) {
+        	if (strstr(line, pattern)) {
+            		printf("%s %s\n", package, version);
+		}
+        }
+    }
+
+    fclose(file);
+    return;
+}
+
 int main(int argc, char *argv[]) 
 {
-	char *startup_cmd = NULL;
+	// const char *pattern;
 	int c;
 
-	while ((c = getopt(argc, argv, "s:pv")) != -1) {
-		if (c == 'p')
+	while ((c = getopt(argc, argv, "s:hpsv")) != -1) {
+		switch (c) {
+		case 'p':
 			list_packages();
-		else if (c == 'v')
+			break;
+		case 'v':
 			die("simple qi info tool.");
-		else
+			break;
+		case 's':
+			search_packages(argv[2]);
+			break;
+		case 'h':
 			goto usage;
+			break;
+		default:
+			goto usage;
+		}
 	}
 	if (optind < argc)
 		goto usage;
 
-	return EXIT_SUCCESS;
+	return 0;
 
 usage:
-	die("Usage: %s [-pv]", argv[0]);
+	die("Usage: %s [-hpsv]", argv[0]);
 }
