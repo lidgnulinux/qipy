@@ -51,8 +51,14 @@ def info(keyword):
 def recipe(keyword):
   recipe = glob.glob("/var/lib/qi/"+keyword+"_"+"*.recipe")
   rcp = '/'.join(recipe)
-  with open(rcp, 'r') as f:
-    subprocess.run(['less'], stdin=f)
+  if os.path.isfile(rcp):
+    with open(rcp, 'r') as f:
+      subprocess.run(['less'], stdin=f)
+  else:
+    recipe = glob.glob("/var/lib/qi/"+keyword+"@"+"*.recipe")
+    rcp = '/'.join(recipe)
+    with open(rcp, 'r') as f:
+      subprocess.run(['less'], stdin=f)
 
 def get_source(keyword):
   package = glob.glob("/var/lib/qi/"+keyword+"_"+"*.txt")
