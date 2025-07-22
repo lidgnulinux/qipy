@@ -109,10 +109,21 @@ def get_recipe(keyword):
     shutil.copy(rcp2, "recipe")
 
 def count_recipe():
-  with open("/var/qi/installed_packages.list", 'r') as f: 
-    contents = f.read()
-    line_count = contents.count('\n')
-    print("Total package(s): ", line_count, "package(s).")
+#  with open("/var/qi/installed_packages.list", 'r') as f: 
+#    contents = f.read()
+#    line_count = contents.count('\n')
+#    print("Total package(s): ", line_count, "package(s).")
+  count = 0
+  try:
+    for item in os.listdir("/usr/pkg"):
+      item_path = os.path.join("/usr/pkg", item)
+      if os.path.isdir(item_path):
+        count += 1
+  except FileNotFoundError:
+    print("FNFE")
+  except PermissionError:
+    print("PE")
+  print(count, "packages installed")
 
 def local_packages(keyword):
   arch=sorted(glob.glob("/var/cache/qi/packages/amd64/"+"*"+keyword+"*_*.tlz"))
