@@ -133,8 +133,18 @@ def local_packages(keyword):
           package = files.rstrip('\n')
           print(*package, sep="")
 
+def recent_packages(k):
+  os.chdir("/var/lib/qi")
+  recent_list = sorted(glob.glob("*_*." + "recipe"), key=lambda x: os.path.getmtime(x), reverse=True)
+  k = int(k)
+  for file in recent_list[:k]:
+      package = file.rstrip('\n').split('_')[:2]
+      print(*package, sep=" ")
+
 if args.opt1 in ("list", "l"):
    packages()
+elif args.opt1 in ("recent", "rc"):
+   recent_packages(args.opt2)
 elif args.opt1 in ("search", "s"):
    search(args.opt2)
 elif args.opt1 in ("info", "i"):

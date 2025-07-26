@@ -18,6 +18,7 @@ Qipy has some simple features, like :
 - Copy local / installed recipe.
 - Count & view recipe.
 - Search local package(s).
+- Show recent installed packages.
 
 ## Usage.
 
@@ -94,4 +95,11 @@ It's easy to use qipy. We just need to run these commands :
 	```
 	$ qipy local <name of package>
 	$ qipy lc <name of package>
+	```
+
+- Show recent installed packages.
+
+	```
+	$ qipy recent <number of packages>
+	$ qipy rc <number of package>
 	```
