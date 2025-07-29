@@ -3,7 +3,20 @@
 ## master
 
 New changelog.
+
+- Deprecating /var/qi/installed_packages.list file in count recipe function.
+- Add show recent installed packages function, update README.
+- Update doc and add html for doc.
+- Add qipy usage/help, accesible using `qipy h` or `qipy help`.
+- Add simple manpage.
+
+## v0.3
+
 - Make second argument as optional.
+- Set release=0 for all recipes template.
+- Enable show info and view recipe for unique package with name@category type only.
+- /var/qi/installed_packages.list file is obsolete, but still useful.
+- Add initial develepmont for qic.
 
 ## v0.2
 
