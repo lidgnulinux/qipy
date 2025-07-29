@@ -4,8 +4,8 @@
 set -e
 
 program=qipy-git
-commit=97a16ac07e763907b792f4a39555077cf781a704
-version=0.3.r33.c97a16ac0
+commit=881f335701f6a752c7bbc4803063580b275ad37e
+version=0.3.r34.c881f3357
 release=0
 description="Simple helper for qi to query information about package."
 homepage="https://gitlab.com/lidgnulinux/qi_wrapper"
