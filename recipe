@@ -35,7 +35,6 @@ build()
 	cp -r patches "${destdir}/etc/qipy/"
 	cp -r doc "${destdir}/usr/share/qipy/"
 	cp -r doc/qipy.1 "$destdir/usr/share/man/man1"
-	cp -r qipy.html "${destdir}/usr/share/qipy/"
 
 	install -Dm0755 qipy "${destdir}/usr/bin/qipy"
 	install -Dm0644 patches/enable_update_installed_packages.diff "${destdir}/etc/qipy/enable_update_installed_packages.diff"
