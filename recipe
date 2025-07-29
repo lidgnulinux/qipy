@@ -4,8 +4,8 @@
 set -e
 
 program=qipy-git
-commit=6a87abd6382c0abda82e09167d6a8e8cf52af4ad
-version=0.3.r31.c6a87abd6
+commit=97a16ac07e763907b792f4a39555077cf781a704
+version=0.3.r33.c97a16ac0
 release=0
 description="Simple helper for qi to query information about package."
 homepage="https://gitlab.com/lidgnulinux/qi_wrapper"
@@ -28,11 +28,13 @@ build()
 
 	mkdir -p "$destdir/etc/qipy"
 	mkdir -p "$destdir/usr/share/qipy"
+	mkdir -p "$destdir/usr/share/man/man1"
 	mkdir -p "$destdir/usr/bin"
 
 	cp -r recipe-templates "${destdir}/etc/qipy/"
 	cp -r patches "${destdir}/etc/qipy/"
 	cp -r doc "${destdir}/usr/share/qipy/"
+	cp -r doc/qipy.1 "$destdir/usr/share/man/man1"
 	cp -r qipy.html "${destdir}/usr/share/qipy/"
 
 	install -Dm0755 qipy "${destdir}/usr/bin/qipy"

@@ -1,0 +1,62 @@
+.TH "QIPY" "1" "July 2025" "Ahmad Raniri" "General Commands Manual"
+.nh
+.ad l
+.SH NAME
+qipy \- simple info tool for qi package manager 
+.SH SYNOPSIS
+\f[B]qipy\f[R] [\f[B]chilrstv\-[cn]\-[lc]\-[rc]\-[sc]\f[R]] 
+
+[\f[B]content \f[I]package\f[R]] [\f[B]help\f[R]] [\f[B]count\f[R]] [\f[B]info \f[I]package\f[R]] [\f[B]local \f[I]pattern\f[R]] [\f[B]list\f[R]] [\f[B]recent\f[R]] [\f[B]recipe \f[I]package\f[R]] [\f[B]search \f[I]pattern\f[R]] [\f[B]source \f[I]package\f[R]] [\f[B]template \f[I]cmake | make | meson\f[R]] [\f[B]view \f[I]package\f[R]]
+.SH DESCRIPTION
+qipy(1) is simple info tool for qi package manager, written in python.Its main function is to show informations about package, like name, version, installed files, etc. I made it to check installed packages on Dragora.
+.SH OPTIONS
+The following are the options that qipy(1) accepts.
+.TP
+\f[B]c \f[I]<package>\f[R], \f[B]content \f[I]<package>\f[R]
+List contents of a package.
+.RE
+.TP
+\f[B]cn\f[R], \f[B]count\f[R]
+Count installed packages.
+.RE
+.TP
+\f[B]i \f[I]<package>\f[R], \f[B]info \f[I]<package>\f[R]
+Show package information, such as package name, version, description, license, etc.
+.RE
+.TP
+\f[B]l\f[R], \f[B]list\f[R]
+List all installed packages, with package name and their version.
+.RE
+.TP
+\f[B]lc \f[I]package | pattern\f[R], \f[B]local \f[I]package | pattern\f[R]
+Show local package which available at /var/cache/qi/packages/{amd64,noarch}.
+.RE
+.TP
+\f[B]r \f[I]<package>\f[R], \f[B]recipe \f[I]<package>\f[R]
+Copy local / installed recipe from /var/lib/qi directory into current working directory. If recipe file already exists at current working directory, it will not overide it.
+.RE
+.TP
+\f[B]rc \f[I]<number>\f[R], \f[B]recent \f[I]<number>\f[R]
+Show recent installed packages.
+.RE
+.TP
+\f[B]s \f[I]<pattern>\f[R], \f[B]search \f[I]<pattern>\f[R]
+Search installed package.
+.RE
+.TP
+\f[B]sc \f[I]<package>\f[R], \f[B]source \f[I]<package>\f[R]
+Download source code of package.
+.RE
+.TP
+\f[B]t \f[I]<cmake | make | meson>\f[R], \f[B]template \f[I]<cmake | make | meson>\f[R]
+Create recipe / build template, the available templates are \f[I]cmake build\f[R], \f[I]make build\f[R] and \f[I]meson build\f[R].
+.RE
+.TP
+\f[B]v \f[I]<package>\f[R], \f[B]view \f[I]<package>\f[R]
+View package recipe, will be useful to know how package's built.
+
+.SH AUTHORS
+Ahmad Raniri \c
+.MT lidgnulinux@gmail.com
+.ME \c
+\ and contributors.
