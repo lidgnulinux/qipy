@@ -10,6 +10,7 @@ New changelog.
 - Add qipy usage/help, accesible using `qipy h` or `qipy help`.
 - Add simple manpage.
 - Add default help (-h / --help).
+- Remove pkg_file function.
 
 ## v0.3
 
