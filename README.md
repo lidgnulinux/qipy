@@ -8,11 +8,10 @@ like name, version, installed files, etc. I made it to check installed packages 
 ## Features.
 
 Qipy has some simple features, like :
-- List all installed recipes.
+- List all installed packages.
 - Search recipe.
 - Show package information.
 - Create a recipe template for particular build method (`meson` build, `make` build and `cmake` build).
-- Check which package(s) contain particular file, it's like `apt-file find` and `pacman -F`.
 - Check contents of package, it's like `apt-file list` and `pacman -Fl`.
 - Download source code of package, it's still slow and will be improved later.
 - Copy local / installed recipe.
@@ -25,7 +24,7 @@ Qipy has some simple features, like :
 It's easy to use qipy. We just need to run these commands :
 
 ----
-- List all installed recipes.
+- List all installed packages.
 
 	```
 	$ qipy list
@@ -51,13 +50,6 @@ It's easy to use qipy. We just need to run these commands :
 	```
 	$ qipy template make
 	$ qipy t make
-	```
-----
-- Find which package own a file.
-
-	```
-	$ qipy file <name of file>
-	$ qipy f <name of file>
 	```
 ----
 - List contents of a package.

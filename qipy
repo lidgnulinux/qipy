@@ -80,14 +80,6 @@ def pkg_contents(keyword):
       list_contents=os.path.join(root, file).split("/usr/pkg/")[1]
       package_name_vers=pkg.split("/usr/pkg/")[1]
       print(package_name_vers, ":", "/"+list_contents.split(package_name_vers + "/")[1])
-
-# To get "content_pkgs.index" file, generate the index using command : find /usr/pkg > /var/qi/content_pkgs.index
-def pkg_file(keyword):
-  with open("/var/qi/content_pkgs.index", 'r') as f:
-    for line in f.readlines():
-      if keyword in line:
-          lines=line.rstrip('\n')
-          print(*lines, sep="")
   
 def get_template(keyword):
   file = 'recipe'
@@ -188,8 +180,6 @@ elif args.opt1 in ("template", "t"):
    get_template(args.opt2)
 elif args.opt1 in ("content", "c"):
    pkg_contents(args.opt2)
-elif args.opt1 in ("file", "f"):
-   pkg_file(args.opt2)
 elif args.opt1 in ("recipe", "r"):
    get_recipe(args.opt2)
 elif args.opt1 in ("count", "cn"):

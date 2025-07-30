@@ -38,11 +38,10 @@ like name, version, installed files, etc. I made it to check installed packages 
 <h2 id="features">Features.</h2>
 <p>Qipy has some simple features, like :</p>
 <ul>
-<li>List all installed recipes.</li>
+<li>List all installed packages.</li>
 <li>Search recipe.</li>
 <li>Show package information.</li>
 <li>Create a recipe template for particular build method (<code>meson</code> build, <code>make</code> build and <code>cmake</code> build).</li>
-<li>Check which package(s) contain particular file, it’s like <code>apt-file find</code> and <code>pacman -F</code>.</li>
 <li>Check contents of package, it’s like <code>apt-file list</code> and <code>pacman -Fl</code>.</li>
 <li>Download source code of package, it’s still slow and will be improved later.</li>
 <li>Copy local / installed recipe.</li>
@@ -55,7 +54,7 @@ like name, version, installed files, etc. I made it to check installed packages 
 <hr/>
 <ul>
 <li>
-<p>List all installed recipes.</p>
+<p>List all installed packages.</p>
 <pre><code>$ qipy list
 $ qipy l
 </code></pre>
@@ -88,16 +87,6 @@ $ qipy i &lt;name of package&gt;
 <p>Create recipe / build template.</p>
 <pre><code>$ qipy template make
 $ qipy t make
-</code></pre>
-<pre><code></code></pre>
-</li>
-</ul>
-<hr/>
-<ul>
-<li>
-<p>Find which package own a file.</p>
-<pre><code>$ qipy file &lt;name of file&gt;
-$ qipy f &lt;name of file&gt;
 </code></pre>
 <pre><code></code></pre>
 </li>
