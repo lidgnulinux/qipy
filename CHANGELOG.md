@@ -9,6 +9,7 @@ New changelog.
 - Update doc and add html for doc.
 - Add qipy usage/help, accesible using `qipy h` or `qipy help`.
 - Add simple manpage.
+- Add default help (-h / --help).
 
 ## v0.3
 
