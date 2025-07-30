@@ -8,9 +8,10 @@ import re
 # from urllib.request import urlretrieve 
 # import requests
 
-parser=argparse.ArgumentParser(description="simple qi wrapper.")
-parser.add_argument("opt1")
+parser=argparse.ArgumentParser(description="simple qi wrapper.", add_help=False)
+parser.add_argument("opt1", nargs='?')
 parser.add_argument("opt2", nargs='?')
+parser.add_argument('-h', '--help', action='store_true', help='Show this help message and exit.')
 args=parser.parse_args()
 
 def packages():
@@ -199,5 +200,7 @@ elif args.opt1 in ("local", "lc"):
    local_packages(args.opt2)
 elif args.opt1 in ("help", "h"):
    print(qipy_usage)
+elif args.help:
+   print(qipy_usage)
 else:
-    print("Run qipy h or qipy help")
+    print(qipy_usage)
