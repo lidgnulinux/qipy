@@ -134,35 +134,26 @@ def recent_packages(k):
       package = file.rstrip('\n').split('_')[:2]
       print(*package, sep=" ")
 
-BOLD = "\033[1m"
-RESET = "\033[0m"
+BO = "\033[1m"
+RE = "\033[0m"
 
 qipy_usage = f"""
-{BOLD}Qipy usage{RESET} :
+{BO}Qipy usage{RE} :
 
-- {BOLD}qipy help{RESET} / {BOLD}qipy h{RESET} : Show help / qipy usage.
+    {BO}content{RE}, {BO}c <package>{RE}	List contents of a package.
+    {BO}count{RE}, {BO}cn{RE}			Count installed package(s).
+    {BO}help{RE}, {BO}h{RE}			Show help / qipy usage.
+    {BO}info{RE}, {BO}i <package>{RE}		Show package information.
+    {BO}list{RE}, {BO}l{RE}			List all installed packages.
+    {BO}local{RE}, {BO}lc <package>{RE}		Search local package(s).
+    {BO}recipe{RE}, {BO}r <package>{RE}		Copy local / installed recipe.
+    {BO}recent{RE}, {BO}rc <number{RE}		Show recent installed packages.
+    {BO}search{RE}, {BO}s <pattern>{RE}		Search package.
+    {BO}source{RE}, {BO}sc <package>{RE}	Download  source code of package.
+    {BO}template{RE}, {BO}t <template>{RE}	Create recipe / build template.
+    {BO}view{RE}, {BO}v <package>{RE}		View package recipe.
 
-- {BOLD}qipy list{RESET} / {BOLD}qipy l{RESET} : List all installed recipes.
-
-- {BOLD}qipy search <pattern>{RESET} / {BOLD}qipy s <pattern>{RESET} : Search package.
-
-- {BOLD}qipy info <package>{RESET} / {BOLD}qipy i <package>{RESET} : Show package information.
-
-- {BOLD}qipy template <make/cmake/meson>{RESET} / {BOLD}qipy t <make/cmake/meson>{RESET} : Create recipe / build template.
-
-- {BOLD}qipy content <package>{RESET} / {BOLD}qipy c <package>{RESET} : List contents of a package.
-
-- {BOLD}qipy source <package>{RESET} / {BOLD}qipy sc <package>{RESET} : Download  source code of package.
-
-- {BOLD}qipy recipe <package>{RESET} / {BOLD}qipy r <package>{RESET} : Copy local / installed recipe.
-
-- {BOLD}qipy count{RESET} / {BOLD}qipy cn{RESET} : Count installed package(s).
-
-- {BOLD}qipy view <package>{RESET} / {BOLD}qipy v <package>{RESET} : View package recipe.
-
-- {BOLD}qipy local <package>{RESET} / {BOLD}qipy lc <package>{RESET} : Search local package(s).
-
-- {BOLD}qipy recent <number of packages>{RESET} / {BOLD}qipy rc <number of packages>{RESET} : Show recent installed packages.
+    {BO}PS: {RE} the available template are {BO}cmake{RE}, {BO}make{RE} and {BO}meson{RE}.
 
 """
 

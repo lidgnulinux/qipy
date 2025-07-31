@@ -9,7 +9,7 @@ like name, version, installed files, etc. I made it to check installed packages 
 
 Qipy has some simple features, like :
 - List all installed packages.
-- Search recipe.
+- Search package.
 - Show package information.
 - Create a recipe template for particular build method (`meson` build, `make` build and `cmake` build).
 - Check contents of package, it's like `apt-file list` and `pacman -Fl`.
