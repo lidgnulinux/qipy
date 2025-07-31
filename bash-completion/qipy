@@ -1,0 +1,3 @@
+#/usr/bin/env bash
+
+complete -W "content count help info list local recipe recent search source template view" qipy
