@@ -4,6 +4,8 @@
 
 New changelog.
 
+## v0.4
+
 - Deprecating /var/qi/installed_packages.list file in count recipe function.
 - Add show recent installed packages function, update README.
 - Update doc and add html for doc.
