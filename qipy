@@ -138,6 +138,8 @@ BO = "\033[1m"
 RE = "\033[0m"
 
 qipy_usage = f"""
+{BO}Qipy{RE} - simple info tool for qi package manager
+
 {BO}Qipy usage{RE} :
 
     {BO}content{RE}, {BO}c <package>{RE}	List contents of a package.
