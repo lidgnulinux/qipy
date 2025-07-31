@@ -1,3 +1,40 @@
 #/usr/bin/env bash
 
-complete -W "content count help info list local recipe recent search source template view" qipy
+_completion_qipy() 
+{
+
+    local packages cur prev
+    packages=$(find /var/lib/qi/ -name "*.recipe" -printf '%f\n' | cut -d "_" -f 1)
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    
+    case "$prev" in
+        content)
+          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
+          return 0
+          ;;
+        view)
+          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          return 0
+          ;;
+        recipe)
+          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          return 0
+          ;;
+        source)
+          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          return 0
+          ;;
+        info)
+          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          return 0
+          ;;
+        template)
+          COMPREPLY=( $(compgen -W "cmake make meson" -- "${COMP_WORDS[COMP_CWORD]}") )
+          return 0
+          ;;
+    esac
+
+}
+complete -W "content count help info list local recipe recent search source template view" -F _completion_qipy qipy
