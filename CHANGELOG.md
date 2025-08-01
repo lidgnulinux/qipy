@@ -3,6 +3,8 @@
 ## master
 
 New changelog.
+- Make --help more clear. 
+- Add bash completion.
 
 ## v0.4
 

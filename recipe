@@ -4,8 +4,8 @@
 set -e
 
 program=qipy-git
-commit=9469f14422da081fea2138b127be3ce6295b7eb5
-version=0.4.r45.c9469f144
+commit=fb39c7111a2b2c2b6d09915a085874ea84ad218e
+version=0.4.r52.cfb39c711
 release=0
 description="Simple helper for qi to query information about package."
 homepage="https://gitlab.com/lidgnulinux/qi_wrapper"
@@ -37,7 +37,7 @@ build()
 	cp -r doc "${destdir}/usr/share/qipy/"
 	cp -r doc/qipy.1 "$destdir/usr/share/man/man1"
 
-	install -Dm0755 qipy "${destdir}/usr/bin/qipy"
+	install -Dm0755 qi.py "${destdir}/usr/bin/qipy"
 	install -Dm0755 bash-completion/qipy "$destdir/usr/share/bash-completion/completions/qipy"
 	install -Dm0644 patches/enable_update_installed_packages.diff "${destdir}/etc/qipy/enable_update_installed_packages.diff"
 
