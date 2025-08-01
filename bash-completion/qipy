@@ -3,38 +3,34 @@
 _completion_qipy() 
 {
 
-    local packages cur prev
+    local packages cur prev first_arg
+
     packages=$(find /var/lib/qi/ -name "*.recipe" -printf '%f\n' | cut -d "_" -f 1)
+    _options="content count help info list local recipe recent search source template view"
+    _templates="cmake make meson"
+
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
+    first_arg="${COMP_WORDS[1]}"
     
-    case "$prev" in
-        content)
-          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
-          return 0
-          ;;
-        view)
-          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
-          return 0
-          ;;
-        recipe)
-          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
-          return 0
-          ;;
-        source)
-          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
-          return 0
-          ;;
-        info)
-          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
-          return 0
-          ;;
-        template)
-          COMPREPLY=( $(compgen -W "cmake make meson" -- "$cur") )
-          return 0
-          ;;
-    esac
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+	    COMPREPLY=( $(compgen -W "$_options" -- ${cur}) )
+	    return 0
+    fi
+
+    if [[ ${COMP_CWORD} -eq 2 ]]; then
+    	case "${first_arg}" in
+    	    c | v | i | r | sc | content | view | recipe | source | info)
+    	      COMPREPLY=( $(compgen -W "$packages" -- ${cur}) )
+    	      ;;
+    	    t | template)
+    	      COMPREPLY=( $(compgen -W "$_templates" -- ${cur}) )
+    	      ;;
+    	esac
+	return 0
+    fi
 
 }
-complete -W "content count help info list local recipe recent search source template view" -F _completion_qipy qipy
+
+complete -F _completion_qipy qipy
