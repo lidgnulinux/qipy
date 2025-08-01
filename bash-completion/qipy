@@ -15,23 +15,23 @@ _completion_qipy()
           return 0
           ;;
         view)
-          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
           return 0
           ;;
         recipe)
-          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
           return 0
           ;;
         source)
-          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
           return 0
           ;;
         info)
-          COMPREPLY=( $(compgen -W "$packages" -- "${COMP_WORDS[COMP_CWORD]}") )
+          COMPREPLY=( $(compgen -W "$packages" -- "$cur") )
           return 0
           ;;
         template)
-          COMPREPLY=( $(compgen -W "cmake make meson" -- "${COMP_WORDS[COMP_CWORD]}") )
+          COMPREPLY=( $(compgen -W "cmake make meson" -- "$cur") )
           return 0
           ;;
     esac
